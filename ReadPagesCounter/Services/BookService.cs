@@ -1,14 +1,11 @@
 ﻿using ReadPagesCounter.DTO;
-using ReadPagesCounter.Extensions;
 using ReadPagesCounter.Models.GoodreadsResponse;
 using ReadPagesCounter.Services.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace ReadPagesCounter.Services
@@ -27,11 +24,17 @@ namespace ReadPagesCounter.Services
             var responseSerializer = new XmlSerializer(typeof(Response));
             var response = (Response)responseSerializer.Deserialize(contentStream);
 
-
-
-
-
-            return null;
+            return response.Search.Result.Works.Select(x => new BookDto()
+            {
+                Id = x.Id,
+                Title = x.BestBook.Title,
+                AuthorName = x.BestBook.Author.Name,
+                AverageRating = x.AverageRating,
+                PublicationYear = !string.IsNullOrEmpty(x.OriginalPublicationYear) ? int.Parse(x.OriginalPublicationYear) : (int?)null,
+                ImageUrl=x.BestBook.ImageUrl,
+                SmallImageUrl=x.BestBook.SmallImageUrl,
+                RatingsCount=x.RatingsCount
+            });
         }
     }
 }

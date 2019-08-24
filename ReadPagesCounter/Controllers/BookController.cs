@@ -21,8 +21,8 @@ namespace ReadPagesCounter.Controllers
         [HttpGet("ByQuery")]
         public async Task<ActionResult<IEnumerable<object>>> GetCollectionByQuery([FromQuery] string query)
         {
-            await _bookService.GetCollectionByQuery(query);
-            return Ok(null);
+            var result=await _bookService.GetCollectionByQuery(query);
+            return Ok(result);
         }
         [HttpGet("{id}/numberOfPages")]
         public async Task<ActionResult<int>> GetNumberOfPages([FromRoute] int id)

@@ -14,10 +14,10 @@ namespace ReadPagesCounter.Models.GoodreadsResponse
         [XmlElement("text_reviews_count")]
         public int TextReviewsCount { get; set; }
         [XmlElement("original_publication_year")]
-        public int OriginalPublicationYear { get; set; }
+        public string OriginalPublicationYear { get; set; }
         [XmlElement("average_rating")]
-        //public decimal AverageRating { get; set; }
-        //[XmlElement("best_book")]
+        public decimal AverageRating { get; set; }
+        [XmlElement("best_book")]
         public Book BestBook { get; set; }
     }
 }
