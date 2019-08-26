@@ -9,5 +9,6 @@ namespace ReadPagesCounter.Services.Interfaces
     public interface IBookService
     {
         Task<IEnumerable<BookDto>> GetCollectionByQuery(string query);
+        Task<int> GetNumberOfPages(int id);
     }
 }

@@ -27,8 +27,8 @@ namespace ReadPagesCounter.Controllers
         [HttpGet("{id}/numberOfPages")]
         public async Task<ActionResult<int>> GetNumberOfPages([FromRoute] int id)
         {
-            await Task.CompletedTask;
-            return Ok();
+            int result = await _bookService.GetNumberOfPages(id);
+            return Ok(result);
         }
 
     }

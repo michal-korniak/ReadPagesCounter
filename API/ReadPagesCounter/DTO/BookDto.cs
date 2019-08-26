@@ -13,6 +13,7 @@ namespace ReadPagesCounter.DTO
         public int? PublicationYear { get; set; }
         public decimal AverageRating { get; set; }
         public int RatingsCount { get; set; }
+        public int BestEditionId { get; set; }
         public string ImageUrl { get; set; }
         public string SmallImageUrl { get; set; }
     }
